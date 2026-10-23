@@ -1,0 +1,54 @@
+/* Static-site adjustments for the Lostlands Wiki export.
+ *
+ * The controls that need a backend are removed from the markup by
+ * tools/build-static.py, not hidden here. This sheet only reclaims the space
+ * they used to occupy, so the page does not carry empty bands where they
+ * stood.
+ *
+ * Vector reserves a 5em strip at the top of the content column
+ * (#mw-head-base) for two rows: the personal tools (Not logged in / Talk /
+ * Contributions / Log in) above, and the tab strip with the search box below.
+ * Every occupant of both rows is now gone -- personal tools, the Read / Edit /
+ * View history tabs, the Main page / Discussion namespace tabs and the search
+ * box -- so the strip is pure empty space and collapses to nothing, letting
+ * the content start level with the logo.
+ */
+
+#mw-head-base {
+	margin-top: 0;
+	height: 0;
+}
+
+/* Both nav containers are empty now; drop the offsets that positioned the
+   tab row so they cannot reintroduce blank space. */
+#left-navigation,
+#right-navigation {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+/* Vector draws the sidebar's first portlet heading tight under the logo on the
+   assumption the tab row sits lower. Nudge it back now the header is shorter. */
+#mw-panel #p-navigation {
+	margin-top: 0.5em;
+}
+
+/* The Navigation portlet keeps its heading but now holds a single link, so the
+   generous portlet spacing below it reads as a gap. Tighten it. */
+#mw-panel #p-navigation .vector-menu-content-list {
+	margin-bottom: 0;
+}
+
+/* With the Tools portlet gone the sidebar ends abruptly against the bottom of
+   the page; a little breathing room keeps the column from looking cut off. */
+#mw-panel {
+	padding-bottom: 1em;
+}
+
+/* The <footer> element is removed entirely by the build once it is empty, so
+   there is no footer rule to suppress here. Vector's #content still carries a
+   bottom margin, which is what now ends the page.
+
+   The leftover "More" (#p-cactions) and language-variants (#p-variants)
+   dropdowns need no handling either: MediaWiki already tags them
+   .emptyPortlet, and Vector's own CSS sets that to display:none. */

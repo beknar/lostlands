@@ -1,0 +1,13 @@
+# The MediaWiki install and its database are backed up outside this repo and
+# must never land in it: LocalSettings.php carries $wgDBpassword, $wgSecretKey
+# and $wgUpgradeKey, and a full dump carries user password hashes. This repo is
+# public. These patterns are a backstop, not the control -- the control is that
+# nothing here is copied from the install except the rendered page.
+LocalSettings*.php
+*.sql
+*.sql.gz
+*.tar.gz
+
+__pycache__/
+*.pyc
+.DS_Store
