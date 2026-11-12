@@ -332,6 +332,8 @@ def rewrite(doc):
     doc = strip_controls(doc)
 
     # --- links to things that need a backend ---
+    # (the favicon link pointed at the wiki's path; site/favicon.ico, the
+    # rpg4you.com icon added 2026-11-12, sits where browsers look by default)
     doc = re.sub(r'<link[^>]*favicon[^>]*>', "", doc)
     doc = re.sub(r'<link[^>]*(?:opensearch_desc\.php|action=rsd|feed=atom)[^>]*>', "", doc)
     counts["stripped backend link"] += 1
